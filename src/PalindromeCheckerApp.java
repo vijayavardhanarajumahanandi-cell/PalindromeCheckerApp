@@ -1,4 +1,7 @@
+
 import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
 
 public class PalindromeCheckerApp {
 
@@ -8,17 +11,20 @@ public class PalindromeCheckerApp {
         System.out.println("Version : 1.0");
         System.out.println("System initialized successfully.");
 
-        String word = "level";
+        String word = "radar";
+
         Stack<Character> stack = new Stack<>();
+        Queue<Character> queue = new LinkedList<>();
 
         for (int i = 0; i < word.length(); i++) {
             stack.push(word.charAt(i));
+            queue.add(word.charAt(i));
         }
 
         boolean isPalindrome = true;
 
-        for (int i = 0; i < word.length(); i++) {
-            if (word.charAt(i) != stack.pop()) {
+        while (!stack.isEmpty()) {
+            if (!stack.pop().equals(queue.remove())) {
                 isPalindrome = false;
                 break;
             }
